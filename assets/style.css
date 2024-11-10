@@ -4,6 +4,8 @@
     padding: 0;
     list-style: none;
     border: none;
+    /* font-family: 'Poppins', sans-serif; */
+
 }
 
 :root {
@@ -30,9 +32,11 @@ html {
 body {
     background: var(--color-gray-100);
     font-family: Poppins;
+
 }
 .container {
     width: 100%;
+    min-height: 100vh;
     max-width: 1500px;
     margin: 0 auto;
 }
@@ -49,7 +53,8 @@ body {
 .todo-sheet {
     background: var(--color-sheet);
     padding: 1.5rem 0;
-    width: 366px;
+    /*! width: 366px; */
+    /* position: fixed; */
 }
 
 
@@ -57,7 +62,8 @@ body {
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    margin: 24px;
+    /*! thats true margin: 24px; */
+    margin: 24px 24px 24px -15px;
     justify-content: flex-start;
 }
 
@@ -72,17 +78,42 @@ form#description-box {
     display: flex;
     justify-content: flex-start;
     align-items: end;
+    position: relative;
 
+}
+.title-todo input {
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-size: 1.125rem; 
+    font-weight: 700;
+    color: var(--color-title);
+    width: 100%; 
+    margin-left: 24px;
+}
+
+.title-todo input:focus {
+    outline: none;
+}
+.required-star {
+    color: var(--color-important-text); 
+    margin-left: 8px; 
+    font-weight: bold; 
+    position: absolute;
+    left: 5rem;
+    font-size: 1.125rem;
+    top: 1rem;
 }
 
 
-.title-todo h3 {
+
+/* .title-todo input::placeholder {
     font-weight: 700;
     font-size: 1.125rem;
     line-height: 27px;
     margin-left: 30px;
+    width: 318px;
     color: var(--color-title);
-}
+} */
 
 .title-todo h3 span {
     color: var(--color-important-text);
@@ -122,6 +153,7 @@ form#description-box {
     max-width: 420px; 
     flex: 1; 
     text-align: center;
+    cursor: pointer;
 }
 
 .btn-secend  {
@@ -214,10 +246,6 @@ color: var(--color-important-text);
 
 
 
-.task-status-section {
-    display: none;
- 
- }
 
 
 
@@ -273,6 +301,8 @@ color: var(--color-important-text);
      font-family: Poppins;
      font-size: 14px;
      font-weight: 600;
+     margin-left: 10px;
+     margin-right: 10px;
      line-height: 21px;
      letter-spacing: -0.02em;
      text-align: left;
@@ -295,10 +325,14 @@ color: var(--color-important-text);
  
  .assign-name span {
      color: var(--color-gray-500);
- }
+     font-weight: 600;
+    }
  
  
- 
+    .task-status-section {
+        display: none;
+
+    }
 
 
 /* media */
@@ -321,13 +355,18 @@ color: var(--color-important-text);
 @media screen and (min-width: 800px) {
     .main-content {
         margin-left: 0;
-    
+        flex-direction: row;
+    }
+    .main-todo-list h3 {
+        text-wrap: nowrap;
     }
     
     .main-section {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
+     display: flex;
+     flex-direction: row;
+     margin-top: 40px;
+     gap: 24px;
+     justify-content: space-between;
     }
     .task-status-section {
         display: flex;

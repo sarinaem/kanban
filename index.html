@@ -20,10 +20,8 @@
           <div class="todo-sheet">
             <div class="text-edit-section">
               <div class="title-todo">
-                <h3>
-                  Title
-                  <span>*</span>
-                </h3>
+                <input type="text" id="title-input" placeholder="Title" />
+                <span class="required-star">*</span>
               </div>
               <form action="#" id="description-box">
                 <textarea id="text-box" placeholder="Description"></textarea>
@@ -44,18 +42,21 @@
                   <div class="radio-box">
                     <input
                       type="radio"
+                      class="name"
                       id="firstName-1"
                       name="en-name"
-                      value="firstName-1"
+                      value="Taha"
                     />
                     <label for="firstName-1">Taha Hosseinpour</label>
                   </div>
                   <div class="radio-box">
                     <input
                       type="radio"
+                      class="name"
                       id="firstName-2"
                       name="en-name"
-                      value="firstName-2"
+                      value="Milad"
+                      checked
                     />
                     <label for="firstName-2">Milad Mirzaei</label>
                   </div>
@@ -64,7 +65,8 @@
                       type="radio"
                       id="firstName-3"
                       name="en-name"
-                      value="firstName-3"
+                      class="name"
+                      value="S.h"
                     />
                     <label for="firstName-3">S.h Mostafavi</label>
                   </div>
@@ -80,6 +82,34 @@
             <div class="main-section">
               <div class="todo-list">
                 <h2>TO DO</h2>
+                <div class="main-todo-list">
+                  <h3>Share it with friends</h3>
+                  <div class="detail-box">
+                    <span class="date">12th Jan</span>
+                    <span class="dott">.</span>
+                    <span class="assign"
+                      >Assigned to
+                      <span> S.h </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="todo-list">
+                <h2>Doing</h2>
+                <div class="main-todo-list">
+                  <h3>Share it with friends</h3>
+                  <div class="detail-box">
+                    <span class="date">12th Jan</span>
+                    <span class="dott">.</span>
+                    <span class="assign"
+                      >Assigned to
+                      <span> S.h </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="todo-list">
+                <h2>Done</h2>
                 <div class="main-todo-list">
                   <h3>Share it with friends</h3>
                   <div class="detail-box">

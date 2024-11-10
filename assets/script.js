@@ -1,33 +1,78 @@
 const mainBtn = document.querySelector(".btn-primary");
+const secendryBtn = document.querySelector(".btn-secend");
 const addTodoList = document.querySelector(".todo-list");
+const titleInput = document.querySelector("#title-input");
+const StarInput = document.querySelector(".required-star");
+const date = new Date();
+const day = date.getDate();
+const month = date.toLocaleString("en", { month: "long" }).substring(0, 3);
+
+function getNewDays(day) {
+  if (day >= 1 && day <= 31) {
+    return "th";
+  } else {
+    return "تاریخ مشخص نیست";
+  }
+}
 
 mainBtn.addEventListener("click", addNewCard);
 
 function addNewCard(event) {
   event.preventDefault();
+
+  let title = titleInput.value;
   let textereaBox = document.querySelector("#text-box").value;
-  let assignUser = document.querySelector(".radio-box label").value;
-  if (textereaBox.trim("") === "" || assignUser === "") {
-    alert("لطفا اطلاعات اولیه را وارد کنید.");
-    return;
+  let userAssign = document.querySelector('input[name="en-name"]:checked');
+  if (title.trim() === "" || userAssign.length === 0) {
+    alert("اطلاعات به درستی وارد نشده است");
   } else {
     let newCard = document.createElement("div");
     newCard.classList.add("main-todo-list");
-    newCard.innerHTML = `<h3>${textereaBox}</h3>
-      <div class="detail-box">
-        <span class="date">${new Date().toLocaleDateString("default", {
-          day: "numeric",
-          month: "long",
-        })}
-        </span>
-        <span class="dott">.</span>
-        <span class="assign">Assigned to <span> ${assignUser}</span></span>
-    </div>
-    `;
-    addTodoList.appendChild(newCard);
 
-    // remove
-    // document.querySelectorAll("input[name='radio-box']").forEach(radio => radio.checked = false);
+    let titleNode = document.createElement("h3");
+    titleNode.classList.add("title-of-main-todo-list");
+    titleNode.textContent = title;
+
+    let newSection = document.createElement("div");
+    newSection.classList.add("detail-box");
+
+    let dateNode = document.createElement("span");
+    dateNode.classList.add("date");
+    dateNode.textContent = `${day}${getNewDays(day)} ${month}`;
+
+    let dotElement = document.createElement("span");
+    dotElement.classList.add("dott");
+    dotElement.textContent = ".";
+
+    let assignElement = document.createElement("span");
+    assignElement.classList.add("assign");
+    assignElement.textContent = "Assigned to ";
+
+    let assignedUser = document.createElement("span");
+    assignedUser.classList.add("assigned-user");
+    assignedUser.textContent = userAssign.value;
+    newSection.appendChild(dateNode);
+    newSection.appendChild(dotElement);
+    newSection.appendChild(assignElement);
+    newSection.appendChild(assignedUser);
+
+    newCard.appendChild(titleNode);
+    newCard.appendChild(newSection);
+
+    addTodoList.appendChild(newCard);
   }
-  // addNewTask.appendChild(textereaBox);
 }
+
+secendryBtn.addEventListener("click", clearData);
+
+function clearData(event) {
+  event.preventDefault();
+  titleInput.value = "";
+  document.querySelector("#text-box").value = "";
+  userAssign.value = "";
+}
+
+// *
+titleInput.addEventListener("keyup", () => {
+  StarInput.style.display = "none";
+});
