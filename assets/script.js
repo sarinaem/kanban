@@ -3,6 +3,9 @@ const secendryBtn = document.querySelector(".btn-secend");
 const addTodoList = document.querySelector(".todo-list");
 const titleInput = document.querySelector("#title-input");
 const StarInput = document.querySelector(".required-star");
+const subtaskBox = document.querySelector(".subtask-section");
+const NewSubtask = document.querySelector("#newSubtask");
+const labelsContent = document.querySelector("#labelNote");
 const date = new Date();
 const day = date.getDate();
 const month = date.toLocaleString("en", { month: "long" }).substring(0, 3);
@@ -15,15 +18,16 @@ function getNewDays(day) {
   }
 }
 
-mainBtn.addEventListener("click", addNewCard);
+mainBtn.addEventListener("click", AddNewCard);
 
-function addNewCard(event) {
+function AddNewCard(event) {
   event.preventDefault();
 
   let title = titleInput.value;
   let textereaBox = document.querySelector("#text-box").value;
   let userAssign = document.querySelector('input[name="en-name"]:checked');
-  if (title.trim() === "" || userAssign.length === 0) {
+
+  if (title.trim() === "" || !userAssign) {
     alert("اطلاعات به درستی وارد نشده است");
   } else {
     let newCard = document.createElement("div");
@@ -39,22 +43,26 @@ function addNewCard(event) {
     let dateNode = document.createElement("span");
     dateNode.classList.add("date");
     dateNode.textContent = `${day}${getNewDays(day)} ${month}`;
+    newSection.appendChild(dateNode);
 
     let dotElement = document.createElement("span");
     dotElement.classList.add("dott");
     dotElement.textContent = ".";
+    newSection.appendChild(dotElement);
 
     let assignElement = document.createElement("span");
     assignElement.classList.add("assign");
     assignElement.textContent = "Assigned to ";
+    newSection.appendChild(assignElement);
 
     let assignedUser = document.createElement("span");
     assignedUser.classList.add("assigned-user");
     assignedUser.textContent = userAssign.value;
-    newSection.appendChild(dateNode);
-    newSection.appendChild(dotElement);
-    newSection.appendChild(assignElement);
     newSection.appendChild(assignedUser);
+    let TexttextereaBox = document.createElement("p");
+    TexttextereaBox.classList.add("detailTodo");
+    TexttextereaBox.textContent = textereaBox;
+    newSection.appendChild(TexttextereaBox);
 
     newCard.appendChild(titleNode);
     newCard.appendChild(newSection);
@@ -63,16 +71,44 @@ function addNewCard(event) {
   }
 }
 
-secendryBtn.addEventListener("click", clearData);
+secendryBtn.addEventListener("click", ClearData);
 
-function clearData(event) {
+function ClearData(event) {
   event.preventDefault();
   titleInput.value = "";
   document.querySelector("#text-box").value = "";
-  userAssign.value = "";
+  const userAssigns = document.querySelectorAll('input[name="en-name"]');
+  userAssigns.forEach((assign) => {
+    assign.checked = false;
+  });
+
+  NewSubtask.innerHTML = "";
+}
+
+const addSubTask = document.querySelector("#newSubtask");
+subtaskBox.addEventListener("click", AddSubtask);
+
+function AddSubtask() {
+  const subtaskContainer = document.createElement("div");
+  subtaskContainer.classList.add("subtask-container");
+  NewSubtask.appendChild(subtaskContainer);
+
+  const checkboxNode = document.createElement("input");
+  checkboxNode.classList.add("checkbox-input");
+  checkboxNode.setAttribute("type", "checkbox");
+  subtaskContainer.appendChild(checkboxNode);
+
+  const InputSubtask = document.createElement("input");
+  InputSubtask.classList.add("newIntputSub");
+  InputSubtask.placeholder = "write subtask ";
+  InputSubtask.type = "text";
+  subtaskContainer.appendChild(InputSubtask);
 }
 
 // *
-titleInput.addEventListener("keyup", () => {
+titleInput.addEventListener("keypress", () => {
+  StarInput.style.display = "none";
+});
+titleInput.addEventListener("blur", () => {
   StarInput.style.display = "none";
 });

@@ -3,130 +3,127 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/style.css" />
-    <title>kanban-todo</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./list-todo.css" />
   </head>
   <body>
-    <body>
-      <div class="container">
-        <div class="main-content">
-          <!-- white section -->
-          <div class="todo-sheet">
-            <div class="text-edit-section">
-              <div class="title-todo">
-                <input type="text" id="title-input" placeholder="Title" />
-                <span class="required-star">*</span>
+    <div class="container">
+      <div class="main-content">
+        <!-- white section -->
+        <div class="todo-sheet">
+          <div class="text-edit-section">
+            <div class="title-todo">
+              <input type="text" id="title-input" placeholder="Title" />
+              <span class="required-star">*</span>
+            </div>
+            <form action="#" id="description-box">
+              <textarea id="text-box" placeholder="Description"></textarea>
+            </form>
+            <!--! subtask -->
+            <div class="subtask-section">
+              <div class="subtask-title">
+                <img src="./assets/img/issues (1).svg" alt="issue" />
+                <h3>subtask</h3>
               </div>
-              <form action="#" id="description-box">
-                <textarea id="text-box" placeholder="Description"></textarea>
-              </form>
-              <!-- assign -->
-              <div class="assign-name-section">
-                <div class="assign-name">
-                  <img src="./assets/img/person (1).svg" alt="assign" />
-
-                  <div class="assign-title">
-                    <h4>
-                      Assignee
-                      <span>*</span>
-                    </h4>
-                  </div>
-                </div>
-                <div class="radio-boxs">
-                  <div class="radio-box">
-                    <input
-                      type="radio"
-                      class="name"
-                      id="firstName-1"
-                      name="en-name"
-                      value="Taha"
-                    />
-                    <label for="firstName-1">Taha Hosseinpour</label>
-                  </div>
-                  <div class="radio-box">
-                    <input
-                      type="radio"
-                      class="name"
-                      id="firstName-2"
-                      name="en-name"
-                      value="Milad"
-                      checked
-                    />
-                    <label for="firstName-2">Milad Mirzaei</label>
-                  </div>
-                  <div class="radio-box">
-                    <input
-                      type="radio"
-                      id="firstName-3"
-                      name="en-name"
-                      class="name"
-                      value="S.h"
-                    />
-                    <label for="firstName-3">S.h Mostafavi</label>
-                  </div>
-                </div>
+              <button type="button">
+                <img src="./assets/img/new-feature (1).svg" alt="" />
+              </button>
+            </div>
+            <div id="newSubtask"></div>
+            <!-- ! label -->
+            <div id="labels">
+              <div class="labelText">
+                <img src="./assets/img/label (1).svg" alt="label" />
+                <h3>label</h3>
               </div>
-              <div class="btn-box">
-                <button class="btn btn-secend">Clear All</button>
-                <button class="btn btn-primary">Create Card</button>
+              <div class="labelNote">
+                <!-- <div>Design</div>
+                  <div>Development</div>
+                  <div>Product</div>
+                  <div>Marketing</div>
+                  <div>Business</div>
+                  <div>Operation</div> -->
               </div>
             </div>
+
+            <!--! assign -->
+            <div class="assign-name-section">
+              <div class="assign-name">
+                <img src="./assets/img/person (1).svg" alt="assign" />
+
+                <div class="assign-title">
+                  <h4>
+                    Assignee
+                    <span>*</span>
+                  </h4>
+                </div>
+              </div>
+              <div class="radio-boxs">
+                <div class="radio-box">
+                  <input
+                    type="radio"
+                    class="name"
+                    id="firstName-1"
+                    name="en-name"
+                    value="Taha"
+                  />
+                  <label for="firstName-1">Taha Hosseinpour</label>
+                </div>
+                <div class="radio-box">
+                  <input
+                    type="radio"
+                    class="name"
+                    id="firstName-2"
+                    name="en-name"
+                    value="Milad"
+                    checked
+                  />
+                  <label for="firstName-2">Milad Mirzaei</label>
+                </div>
+                <div class="radio-box">
+                  <input
+                    type="radio"
+                    id="firstName-3"
+                    name="en-name"
+                    class="name"
+                    value="S.h"
+                  />
+                  <label for="firstName-3">S.h Mostafavi</label>
+                </div>
+              </div>
+            </div>
+            <div class="btn-box">
+              <button class="btn btn-secend">Clear All</button>
+              <button class="btn btn-primary">Create Card</button>
+            </div>
           </div>
-          <div class="task-status-section">
-            <div class="main-section">
-              <div class="todo-list">
-                <h2>TO DO</h2>
-                <div class="main-todo-list">
-                  <h3>Share it with friends</h3>
-                  <div class="detail-box">
-                    <span class="date">12th Jan</span>
-                    <span class="dott">.</span>
-                    <span class="assign"
-                      >Assigned to
-                      <span> S.h </span>
-                    </span>
-                  </div>
+        </div>
+        <div class="task-status-section">
+          <div class="main-section">
+            <div class="todo-list">
+              <h2>TO DO</h2>
+              <div class="main-todo-list">
+                <h3>Share it with friends</h3>
+                <div class="detail-box">
+                  <span class="date">12th Jan</span>
+                  <span class="dott">.</span>
+                  <span class="assign"
+                    >Assigned to
+                    <span> S.h </span>
+                  </span>
                 </div>
               </div>
-              <div class="todo-list">
-                <h2>Doing</h2>
-                <div class="main-todo-list">
-                  <h3>Share it with friends</h3>
-                  <div class="detail-box">
-                    <span class="date">12th Jan</span>
-                    <span class="dott">.</span>
-                    <span class="assign"
-                      >Assigned to
-                      <span> S.h </span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="todo-list">
-                <h2>Done</h2>
-                <div class="main-todo-list">
-                  <h3>Share it with friends</h3>
-                  <div class="detail-box">
-                    <span class="date">12th Jan</span>
-                    <span class="dott">.</span>
-                    <span class="assign"
-                      >Assigned to
-                      <span> S.h </span>
-                    </span>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="todo-list">
+              <h2>Doing</h2>
+            </div>
+            <div class="todo-list">
+              <h2>Done</h2>
             </div>
           </div>
         </div>
       </div>
-    </body>
+    </div>
     <script src="./assets/script.js"></script>
   </body>
 </html>
