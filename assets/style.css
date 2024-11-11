@@ -492,25 +492,27 @@ color: var(--color-important-text);
         margin-left: 0;
         flex-direction: row;
     }
+    .main-section {
+        justify-content: space-between;
+        margin-top: 7px;
+        margin-left: 24px;
+        gap: 2rem;
+        height: 100vh;
+        /*   margin-top:40px*/
+       }
     .main-todo-list {
-    width: 320px;
-    height: 296px;
-   padding: 20px 0px 0px 20px;
-   gap: 16px;
-   border-radius: 8px;
+        width: 320px;
+        height: 36%;
+        padding: 20px 0px 0px 20px;
+        gap: 16px;
+        border-radius: 8px;
 
     }
     .main-todo-list h3 {
         text-wrap: nowrap;
     }
     
-    .main-section {
-     justify-content: space-between;
-     margin-top: 7px;
-     margin-left: 24px;
-     gap: 2rem;
-     /*   margin-top:40px*/
-    }
+  
     .task-status-section {
         display: flex;
         margin-top: 40px;
