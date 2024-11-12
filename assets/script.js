@@ -5,7 +5,8 @@ const titleInput = document.querySelector("#title-input");
 const StarInput = document.querySelector(".required-star");
 const subtaskBox = document.querySelector(".subtask-section");
 const NewSubtask = document.querySelector("#newSubtask");
-const labelsContent = document.querySelector("#labelNote");
+const labelsContent = document.querySelector(".labelNote");
+
 const date = new Date();
 const day = date.getDate();
 const month = date.toLocaleString("en", { month: "long" }).substring(0, 3);
@@ -64,25 +65,23 @@ function AddNewCard(event) {
     TexttextereaBox.textContent = textereaBox;
     newSection.appendChild(TexttextereaBox);
 
+    //* label
+    let selectedButtons = document.querySelectorAll(".selectBtn.selected");
+
+    if (selectedButtons.length > 0) {
+      selectedButtons.forEach((buttonData) => {
+        const newButton = buttonData.cloneNode(true); //!duplicate
+        newSection.appendChild(newButton);
+      });
+    } else {
+      alert("لطفا یک کارت جدید بسازید");
+    }
+
     newCard.appendChild(titleNode);
     newCard.appendChild(newSection);
 
     addTodoList.appendChild(newCard);
   }
-}
-
-secendryBtn.addEventListener("click", ClearData);
-
-function ClearData(event) {
-  event.preventDefault();
-  titleInput.value = "";
-  document.querySelector("#text-box").value = "";
-  const userAssigns = document.querySelectorAll('input[name="en-name"]');
-  userAssigns.forEach((assign) => {
-    assign.checked = false;
-  });
-
-  NewSubtask.innerHTML = "";
 }
 
 const addSubTask = document.querySelector("#newSubtask");
@@ -100,11 +99,50 @@ function AddSubtask() {
 
   const InputSubtask = document.createElement("input");
   InputSubtask.classList.add("newIntputSub");
-  InputSubtask.placeholder = "write subtask ";
+  InputSubtask.placeholder = "write subtask";
   InputSubtask.type = "text";
   subtaskContainer.appendChild(InputSubtask);
 }
 
+// !label labelsContent
+function addLabel(labelText, backgroundColor, textColor, width) {
+  const buttonData = document.createElement("button");
+  buttonData.classList.add("selectBtn");
+  buttonData.style.background = backgroundColor;
+  buttonData.style.color = textColor;
+  buttonData.style.width = width;
+  buttonData.textContent = labelText;
+
+  buttonData.addEventListener("click", () => {
+    buttonData.classList.toggle("selected");
+  });
+
+  labelsContent.appendChild(buttonData);
+}
+
+addLabel("Design", "#F7D4FF", "#A300F4", "73px");
+addLabel("Development", "#D1FADF", "#12B76A", "119px");
+addLabel("Product", "#DFDAFF", "#3D24F6", "80px");
+addLabel("Marketing", "#FFDFDF", "#FF1616", "97px");
+addLabel("Business", "#D1FAF7", "#00DBC2", "87px");
+addLabel("Operation", "#FAFAD1", "#EBBC00", "95px");
+
+secendryBtn.addEventListener("click", ClearData);
+
+function ClearData(event) {
+  event.preventDefault();
+  titleInput.value = "";
+  document.querySelector("#text-box").value = "";
+  const userAssigns = document.querySelectorAll('input[name="en-name"]');
+  userAssigns.forEach((assign) => {
+    assign.checked = false;
+  });
+  const selectedButtons = document.querySelectorAll(".selectBtn.selected");
+  for (let button of selectedButtons) {
+    button.classList.remove("selected");
+  }
+  NewSubtask.innerHTML = "";
+}
 // *
 titleInput.addEventListener("keypress", () => {
   StarInput.style.display = "none";

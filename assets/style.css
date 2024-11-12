@@ -21,28 +21,6 @@
     --color-gray-25 : #FCFCFD;
     --color-shadow-card : #1018284D;
     ---bg-icon: #FFFFFF00;
-    --color-design: #A300F4;
-    --color-bag-design: #F7D4FF;
-    --color-bag-develop: #D1FADF;
-    --color-develop: #12B76A;
-    --color-bag-product: #DFDAFF;
-    --color-text-product: #3D24F6;
-    --color-bg-marketing: #FFDFDF;
-    --color-text-marketing: #FF1616;
-    --color-bg-business: #D1FAF7;
-    --color-text-business: #00DBC2;
-    --color-bg-operation: #FAFAD1;
-    --color-text-operation: #EBBC00;
-
-
-
-
-
-
-
-
-
-
 }
 
 html {
@@ -66,7 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    max-height: 100vh;
+    max-height: 1000vh;
     /* ! margin-left: 24px; add if i need */
 
 }
@@ -110,6 +88,7 @@ form#description-box {
     text-align: left;
     width: 300px; 
     margin-top: 16px;
+    margin-bottom: 16px ;
     overflow: hidden; 
     text-overflow: ellipsis; 
      display: -webkit-box; 
@@ -155,17 +134,6 @@ form#description-box {
     font-size: 1.125rem;
     top: 1rem;
 }
-
-
-
-/* .title-todo input::placeholder {
-    font-weight: 700;
-    font-size: 1.125rem;
-    line-height: 27px;
-    margin-left: 30px;
-    width: 318px;
-    color: var(--color-title);
-} */
 
 .title-todo h3 span {
     color: var(--color-important-text);
@@ -227,9 +195,6 @@ form#description-box {
     color: var(--color-sheet);
     padding: 1.9% 11% 1.9% 11%;
 }
-
-
-
 
 /* assign */
 
@@ -313,11 +278,6 @@ color: var(--color-important-text);
     gap: 16px;
 
  }
-
-
-
-
- 
  
  .todo-list h2 {
      font-size: 2rem;
@@ -360,7 +320,6 @@ color: var(--color-important-text);
      letter-spacing: -0.02em;
      text-align: left;
      text-underline-position: from-font;
-     text-decoration-skip-ink: none;
      
  }
  
@@ -373,7 +332,7 @@ color: var(--color-important-text);
      letter-spacing: -0.02em;
      text-align: left;
      text-underline-position: from-font;
-     text-decoration-skip-ink: none;
+    
  }
  
  .assign-name span {
@@ -391,6 +350,7 @@ color: var(--color-important-text);
     display: flex;
     /* justify-content: space-between; */
     gap: 13rem;
+ 
 }
 .subtask-title {
     display: flex;
@@ -420,6 +380,17 @@ color: var(--color-important-text);
     max-height: 100px;
 }
 
+.newIntputSub::placeholder {
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22.5px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+
+
 .subtask-container {
     border: none;
     border-radius: 8px 0px 0px 0px;
@@ -438,12 +409,15 @@ color: var(--color-important-text);
     }
 
 /* label */
+#labels {
+    margin-left: 30px;
+
+}
 .labelText {
     display: flex;
     flex-direction: row;
     gap: 8px;
-    margin-left: 30px;
-
+    margin-top: 12PX;
 
 }
 
@@ -460,11 +434,34 @@ color: var(--color-important-text);
 .labelNote {
     padding: 6px 12px 6px 12px;
     border-radius: 6px 0px 0px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 25rem;
+    flex-direction: row;
+    gap: 12px;
 }
 
-.labelNote div {
-    margin-left: 2rem;
+
+.selectBtn{
+    height: 33px;
+    padding: 6px 12px 6px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: Poppins;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    text-align: left;
 }
+
+.selectBtn.selected {
+    border: 2px solid var(--main-btn);
+}
+
+
+/* .labelNote div {
+    margin-left: 2rem;
+} */
 
 .main-section {
     display: flex;
@@ -474,14 +471,21 @@ color: var(--color-important-text);
     gap: 36px;
 }
 
-
+.task-status-section { 
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: auto;
+}
 
 @media screen and (min-width: 600px) {
     .main-content {
         margin-left: 0;
         flex-direction: row;
     }
-
+    .todo-sheet {
+        margin-left: 0;
+    }
+  
 }
 
 
@@ -499,13 +503,15 @@ color: var(--color-important-text);
         gap: 2rem;
         height: 100vh;
         /*   margin-top:40px*/
+        overflow-x: hidden;
        }
     .main-todo-list {
         width: 320px;
-        height: 36%;
-        padding: 20px 0px 0px 20px;
+        /* height: 50%; */
+        padding: 20px 0px 25px 20px;
         gap: 16px;
         border-radius: 8px;
+        height: fit-content;   /* add it by myself */
 
     }
     .main-todo-list h3 {
@@ -517,9 +523,22 @@ color: var(--color-important-text);
         display: flex;
         margin-top: 40px;
         background-color: var(--color-gray-100);
-     
+        height: 70vh;
+        overflow-y: auto;
      }
+ 
       .todo-list:first-child {
         margin-left: 32px;
      } 
+
+     .todo-sheet {
+        margin-left: 0; 
+        /* width: 366px; for control */
+        width: 439px;  /* for label :) */
+     }
+
+     .todo-list h2 {
+        margin-right: 16rem;
+        text-wrap: nowrap;
+     }
 }
