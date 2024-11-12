@@ -64,6 +64,8 @@ function AddNewCard(event) {
     TexttextereaBox.textContent = textereaBox;
     newSection.appendChild(TexttextereaBox);
     // subtask
+    subtaskContainer = AddSubtask();
+    newSection.appendChild(subtaskContainer);
 
     //* label
     let selectedButtons = document.querySelectorAll(".selectBtn.selected");
@@ -90,7 +92,6 @@ function AddNewCard(event) {
 
 const addSubTask = document.querySelector("#newSubtask");
 subtaskBox.addEventListener("click", AddSubtask);
-
 // ! add subtask
 function AddSubtask() {
   const subtaskContainer = document.createElement("div");
@@ -107,6 +108,8 @@ function AddSubtask() {
   InputSubtask.placeholder = "write subtask";
   InputSubtask.type = "text";
   subtaskContainer.appendChild(InputSubtask);
+  return subtaskContainer;
+  //   !
 }
 
 // !label labelsContent
@@ -149,6 +152,7 @@ function ClearData(event) {
 
   NewSubtask.innerHTML = "";
 }
+
 // *
 titleInput.addEventListener("keypress", () => {
   StarInput.style.display = "none";

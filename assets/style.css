@@ -401,6 +401,17 @@ color: var(--color-important-text);
     text-align: left;
 }
 
+/* .newIntputSub, .checkbox-input {
+    margin-top: 12px;
+    font-family: Poppins;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: -0.03em;
+    text-align: left;
+} */
+
+
 
 
 .subtask-container {
@@ -554,9 +565,8 @@ color: var(--color-important-text);
         margin-right: 16rem;
         text-wrap: nowrap;
      }
-     .btn-box {
+     /* .btn-box {
         /* margin-top: 5rem; 261px */
-     }
      .btn-primary {
         width: 209px;
 
