@@ -65,6 +65,8 @@ function AddNewCard(event) {
     newSection.appendChild(TexttextereaBox);
     // subtask
     subtaskContainer = AddSubtask();
+    subtaskContainer.style.fontSize = "16px";
+    subtaskContainer.style.fontWeight = "600";
     newSection.appendChild(subtaskContainer);
 
     //* label
@@ -113,12 +115,12 @@ function AddSubtask() {
 }
 
 // !label labelsContent
-function addLabel(labelText, backgroundColor, textColor, width) {
+function addLabel(labelText, backgroundColor, textColor) {
   const buttonData = document.createElement("button");
   buttonData.classList.add("selectBtn");
   buttonData.style.background = backgroundColor;
   buttonData.style.color = textColor;
-  buttonData.style.width = width;
+  //   buttonData.style.width = width;
   buttonData.textContent = labelText;
 
   buttonData.addEventListener("click", () => {
@@ -128,12 +130,12 @@ function addLabel(labelText, backgroundColor, textColor, width) {
   labelsContent.appendChild(buttonData);
 }
 
-addLabel("Design", "#F7D4FF", "#A300F4", "73px");
-addLabel("Development", "#D1FADF", "#12B76A", "119px");
-addLabel("Product", "#DFDAFF", "#3D24F6", "80px");
-addLabel("Marketing", "#FFDFDF", "#FF1616", "97px");
-addLabel("Business", "#D1FAF7", "#00DBC2", "87px");
-addLabel("Operation", "#FAFAD1", "#EBBC00", "95px");
+addLabel("Design", "#F7D4FF", "#A300F4");
+addLabel("Development", "#D1FADF", "#12B76A");
+addLabel("Product", "#DFDAFF", "#3D24F6");
+addLabel("Marketing", "#FFDFDF", "#FF1616");
+addLabel("Business", "#D1FAF7", "#00DBC2");
+addLabel("Operation", "#FAFAD1", "#EBBC00");
 
 secendryBtn.addEventListener("click", ClearData);
 

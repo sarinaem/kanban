@@ -1,0 +1,39 @@
+ @font-face {
+    font-family: 'Poppins';
+    font-style: ExtraLight;
+    font-weight: 200;
+    src: url("./fonts/PlusJakartaSans-ExtraLight.ttf") format('ttf');
+  }
+  @font-face {
+    font-family: 'Poppins';
+    font-style: light;
+    font-weight: 300;
+    src: url(./fonts/PlusJakartaSans-Light.ttf) format('ttf');
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/PlusJakartaSans-Light.ttf") format('ttf');
+  }
+  @font-face {
+    font-family: 'Poppins';
+    font-style: Medium;
+    font-weight: 500;
+    src: url("./fonts/PlusJakartaSans-Medium.ttf") format('ttf');
+  }
+  @font-face {
+    font-family: 'Poppins';
+    font-style: SemiBold;
+    font-weight: 600;
+    src: url("./fonts/PlusJakartaSans-SemiBold.ttf") format('ttf');
+  }
+  @font-face {
+    font-family: 'Poppins';
+    font-style: Bold;
+    font-weight: 700;
+    src: url("./fonts/PlusJakartaSans-Bold.ttf") format('ttf');
+  }
+
+ 
