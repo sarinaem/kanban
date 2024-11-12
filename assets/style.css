@@ -64,7 +64,6 @@ body {
 
 .text-edit-section {
     display: flex;
-    gap: 1rem;
     flex-direction: column;
     /*! thats true margin: 24px; */
     /*     margin: 24px;
@@ -91,11 +90,11 @@ form#description-box {
     margin-bottom: 16px ;
     overflow: hidden; 
     text-overflow: ellipsis; 
-     display: -webkit-box; 
-            -webkit-box-orient: vertical; 
-           -webkit-line-clamp: 2; 
-            line-height: 19.5px; 
-            max-height: 39px;
+     /* display: -webkit-box;  */
+            /* -webkit-box-orient: vertical; 
+           -webkit-line-clamp: 2;  */
+   line-height: 19.5px; 
+max-height: 39px;
     /* padding: 10px;
     inline-size: 150px; */
     /* overflow: hidden; */
@@ -177,23 +176,34 @@ form#description-box {
     justify-content: center;
 }
 
+
+
+
+
 .btn-secend  {
+    width: 97px;
     border: 1.4px solid var(--color-important-text);
     color: var(--color-important-text);
     background-color: var(--color-sheet);
     text-align: center;
+    height: 44px;
     border-radius: 8px;
     padding: 1.9% 11% 1.9% 11%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 .btn-primary {
     text-align: center;
     font-family: Poppins;
     font-size: 15px;
-    border-radius: 8px;
     font-weight: 600;
     background: var(--main-btn);
     color: var(--color-sheet);
     padding: 1.9% 11% 1.9% 11%;
+    border-radius: 8px;
+
 }
 
 /* assign */
@@ -350,6 +360,8 @@ color: var(--color-important-text);
     display: flex;
     /* justify-content: space-between; */
     gap: 13rem;
+    margin-left: 12px;
+    margin-top: 12px;
  
 }
 .subtask-title {
@@ -396,6 +408,7 @@ color: var(--color-important-text);
     border-radius: 8px 0px 0px 0px;
     gap: 8px;
     display: flex;
+    margin-left: 13px;
 
 
 }
@@ -478,10 +491,9 @@ color: var(--color-important-text);
 }
 
 @media screen and (min-width: 600px) {
-    .main-content {
-        margin-left: 0;
-        flex-direction: row;
-    }
+   .main-content {
+    flex-direction: row;
+   }
     .todo-sheet {
         margin-left: 0;
     }
@@ -501,8 +513,8 @@ color: var(--color-important-text);
         margin-top: 7px;
         margin-left: 24px;
         gap: 2rem;
-        height: 100vh;
-        /*   margin-top:40px*/
+        /* height: 100vh; */
+        margin-top:40px;
         overflow-x: hidden;
        }
     .main-todo-list {
@@ -535,10 +547,33 @@ color: var(--color-important-text);
         margin-left: 0; 
         /* width: 366px; for control */
         width: 439px;  /* for label :) */
+    
      }
 
      .todo-list h2 {
         margin-right: 16rem;
         text-wrap: nowrap;
      }
+     .btn-box {
+        /* margin-top: 5rem; 261px */
+     }
+     .btn-primary {
+        width: 209px;
+
+     }
+     .btn-secend {
+        height: 48px;
+        text-align: center;
+     }
 }
+
+
+
+
+
+/*         height: 938px;
+        margin-top: 0px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+    } */

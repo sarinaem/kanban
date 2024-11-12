@@ -18,7 +18,6 @@ function getNewDays(day) {
     return "تاریخ مشخص نیست";
   }
 }
-
 mainBtn.addEventListener("click", AddNewCard);
 
 function AddNewCard(event) {
@@ -64,10 +63,11 @@ function AddNewCard(event) {
     TexttextereaBox.classList.add("detailTodo");
     TexttextereaBox.textContent = textereaBox;
     newSection.appendChild(TexttextereaBox);
+    // subtask
 
     //* label
     let selectedButtons = document.querySelectorAll(".selectBtn.selected");
-    let checkLabel = new Set();
+    let checkLabel = new Set(); //no repeat
     if (selectedButtons.length > 0) {
       selectedButtons.forEach((buttonData) => {
         const labelText = buttonData.textContent;
@@ -108,8 +108,6 @@ function AddSubtask() {
   InputSubtask.type = "text";
   subtaskContainer.appendChild(InputSubtask);
 }
-
-addSubTask.appendChild(subtaskContainer);
 
 // !label labelsContent
 function addLabel(labelText, backgroundColor, textColor, width) {
