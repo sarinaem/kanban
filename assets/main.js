@@ -6,13 +6,13 @@ const StarInput = document.querySelector(".required-star");
 const subtaskBox = document.querySelector(".subtask-section");
 const NewSubtask = document.querySelector("#newSubtask");
 const labelsContent = document.querySelector(".labelNote");
-
+let subtaskInput = [];
 const date = new Date();
 const day = date.getDate();
 const month = date.toLocaleString("en", { month: "long" }).substring(0, 3);
 
 function getNewDays(day) {
-  if (day >= 1 && day <= 12) {
+  if (day >= 1 && day <= 31) {
     return "th";
   } else {
     return "تاریخ مشخص نیست";
@@ -32,6 +32,7 @@ function AddNewCard(event) {
   } else {
     let newCard = document.createElement("div");
     newCard.classList.add("main-todo-list");
+    newCard.setAttribute("draggable", "true");
 
     let titleNode = document.createElement("h3");
     titleNode.classList.add("title-of-main-todo-list");
@@ -63,32 +64,53 @@ function AddNewCard(event) {
     TexttextereaBox.classList.add("detailTodo");
     TexttextereaBox.textContent = textereaBox;
     newSection.appendChild(TexttextereaBox);
-    // subtask
-    subtaskContainer = AddSubtask();
-    subtaskContainer.style.fontSize = "16px";
-    subtaskContainer.style.fontWeight = "600";
-    newSection.appendChild(subtaskContainer);
+
+    if (subtaskInput.length > 0) {
+      const subtaskListContainer = document.createElement("div");
+      subtaskListContainer.classList.add("subtask-list");
+
+      subtaskInput.forEach((subtask) => {
+        let subtaskNode = document.createElement("p");
+        subtaskNode.classList.add("subtask-item");
+        subtaskNode.textContent = subtask;
+        subtaskListContainer.appendChild(subtaskNode);
+      });
+      newSection.appendChild(subtaskListContainer);
+    }
+
+    // const checkTik = document.querySelectorAll('input[name="en-name"]');
 
     //* label
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("buttonContainer");
     let selectedButtons = document.querySelectorAll(".selectBtn.selected");
     let checkLabel = new Set(); //no repeat
     if (selectedButtons.length > 0) {
+      const labelDiv = document.createElement("div");
+      labelDiv.classList.add("labelDiv");
+
       selectedButtons.forEach((buttonData) => {
         const labelText = buttonData.textContent;
         if (!checkLabel.has(labelText)) {
           const newButton = buttonData.cloneNode(true);
+          newButton.classList.add("newBtn");
           newButton.style.margin = "8px";
+
           newButton.style.textAlign = "center";
-          newSection.appendChild(newButton);
-          checkLabel.add(labelText);
+          labelDiv.appendChild(newButton);
+          newSection.appendChild(labelDiv);
+
+          //! checkLabel.add(labelText);
         }
       });
+      newSection.appendChild(buttonContainer);
     }
 
     newCard.appendChild(titleNode);
     newCard.appendChild(newSection);
 
     addTodoList.appendChild(newCard);
+    ClearData();
   }
 }
 
@@ -108,19 +130,31 @@ function AddSubtask() {
   const InputSubtask = document.createElement("input");
   InputSubtask.classList.add("newIntputSub");
   InputSubtask.placeholder = "write subtask";
+  InputSubtask.style.fontSize = "16px";
+  InputSubtask.style.fontFamily = "Poppins";
+  InputSubtask.style.fontWeight = "600";
+  InputSubtask.style.textAlign = "left";
+  InputSubtask.style.color = "#2B2D31";
   InputSubtask.type = "text";
   subtaskContainer.appendChild(InputSubtask);
+
+  InputSubtask.addEventListener("blur", () => {
+    const subtaskText = InputSubtask.value.trim();
+    if (subtaskText) {
+      subtaskInput.push(subtaskText);
+    }
+  });
   return subtaskContainer;
+
   //   !
 }
 
-// !label labelsContent
+// !label
 function addLabel(labelText, backgroundColor, textColor) {
   const buttonData = document.createElement("button");
   buttonData.classList.add("selectBtn");
   buttonData.style.background = backgroundColor;
   buttonData.style.color = textColor;
-  //   buttonData.style.width = width;
   buttonData.textContent = labelText;
 
   buttonData.addEventListener("click", () => {
@@ -140,7 +174,7 @@ addLabel("Operation", "#FAFAD1", "#EBBC00");
 secendryBtn.addEventListener("click", ClearData);
 
 function ClearData(event) {
-  event.preventDefault();
+  event?.preventDefault();
   titleInput.value = "";
   document.querySelector("#text-box").value = "";
   const userAssigns = document.querySelectorAll('input[name="en-name"]');
@@ -153,6 +187,7 @@ function ClearData(event) {
   }
 
   NewSubtask.innerHTML = "";
+  subtaskInput = [];
 }
 
 // *
@@ -161,4 +196,25 @@ titleInput.addEventListener("keypress", () => {
 });
 titleInput.addEventListener("blur", () => {
   StarInput.style.display = "none";
+});
+
+// drag and drop
+
+let dragged = null;
+
+document.addEventListener("dragstart", (event) => {
+  if (event.target.classList.contains("main-todo-list")) {
+    dragged = event.target;
+  }
+});
+document.addEventListener("dragover", (event) => {
+  event.preventDefault();
+});
+
+document.addEventListener("drop", (event) => {
+  event.preventDefault();
+  if (event.target.classList.contains("todo-list")) {
+    dragged.parentNode.removeChild(dragged);
+    event.target.appendChild(dragged);
+  }
 });
