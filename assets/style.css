@@ -546,13 +546,14 @@ input.newIntputSub {
         margin-left: 24px;
         margin-top: 0;
         gap: 2rem;
-        height: 617px;
+        /* height: 617px; */
         overflow-y: auto;
-        overflow-x: hidden;
+        /* overflow-x: scroll; */
  
         /* height: 100vh; */
         /* overflow-x: hidden; */
        }
+ 
     .main-todo-list {
         width: 320px;
         /* height: 50%; */
