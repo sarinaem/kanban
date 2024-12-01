@@ -560,8 +560,6 @@ input.newIntputSub {
         padding: 20px 0px 25px 20px;
         gap: 16px;
         border-radius: 8px;
-        /* height: fit-content;   add it by myself */
-
     }
     .main-todo-list h3 {
         text-wrap: nowrap;

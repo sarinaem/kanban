@@ -191,7 +191,7 @@ function ClearData(event) {
 }
 
 // *
-titleInput.addEventListener("keypress", () => {
+titleInput.addEventListener("keydown", () => {
   StarInput.style.display = "none";
 });
 titleInput.addEventListener("blur", () => {
