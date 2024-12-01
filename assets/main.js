@@ -196,6 +196,7 @@ titleInput.addEventListener("keydown", () => {
 });
 titleInput.addEventListener("blur", () => {
   StarInput.style.display = "none";
+  titleInput.value = titleInput.value.replace(/\*/g, "");
 });
 
 // drag and drop
